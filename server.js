@@ -21,7 +21,7 @@ app.get('/api/items', (_req, res) => {
     .find()
     .then(item => {
       res.json({
-        item: item.map(
+        items: item.map(
           (item) => item.serialize())
       });
     })
