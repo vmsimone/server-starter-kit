@@ -1,0 +1,20 @@
+{
+  "name": "server-starter-kit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/vmsimone/server-starter-kit.git"
+  },
+  "author": "vsimone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vmsimone/server-starter-kit/issues"
+  },
+  "homepage": "https://github.com/vmsimone/server-starter-kit#readme"
+}
