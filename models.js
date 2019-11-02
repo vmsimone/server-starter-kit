@@ -22,6 +22,6 @@ yourSchema.methods.serialize = function() {
     };
 };
 
-const Item = mongoose.model('Item', yourSchema, 'database');
+const Item = mongoose.model('Item', yourSchema);
 
 module.exports = {Item};

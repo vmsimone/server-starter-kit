@@ -16,7 +16,7 @@ app.get('/', (_req,res) => {
   res.sendFile(__dirname + '/public/index.html');
 });
 
-app.get('/api/database', (_req, res) => {
+app.get('/api/items', (_req, res) => {
   Item
     .find()
     .then(item => {
@@ -27,11 +27,11 @@ app.get('/api/database', (_req, res) => {
     })
     .catch(err => {
       console.error(err);
-      res.status(500).json({ error: 'Error thrown during GET' });
+      res.status(500).json({ error: 'Internal server error' });
     });
 });
 
-app.post('/api/database', (req, res) => {
+app.post('/api/items', (req, res) => {
     //include any additional keys you're expecting
     const requiredKeys = ['title', 'description'];
     for (let i = 0; i < requiredKeys.length; i++) {
@@ -50,11 +50,11 @@ app.post('/api/database', (req, res) => {
   .then(Item => res.status(201).json(Item.serialize()))
   .catch(err => {
     console.log(err);
-    res.status(500).json({ error: 'POST not functioning correctly' });
+    res.status(500).json({ error: 'Internal server error' });
   });
 });
 
-app.put('/api/database/:id', (req, res) => {
+app.put('/api/items/:id', (req, res) => {
   if(!(req.body.id)) {
     res.status(400).json({
       error: 'Request body does not contain id'
@@ -82,11 +82,11 @@ app.put('/api/database/:id', (req, res) => {
     .then(() => res.status(204).end())
     .catch(err => {
       console.error(err);
-      res.status(500).json({ message: 'PUT not functioning correctly' });
+      res.status(500).json({ message: 'Internal server error' });
     });
 });
 
-app.delete('/api/database/:id', (req, res) => {
+app.delete('/api/items/:id', (req, res) => {
   Item
     .findByIdAndRemove(req.params.id)
     .then(() => {
@@ -94,7 +94,7 @@ app.delete('/api/database/:id', (req, res) => {
     })
     .catch(err => {
       console.error(err);
-      res.status(500).json({ message: 'DELETE misfired '});
+      res.status(500).json({ message: 'Internal server error'});
     });
 });
 
