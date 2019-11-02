@@ -1,7 +1,7 @@
 function loadUpdateForm(selectedItem) {
     console.log('form loaded');
     const itemID = $(selectedItem).attr('id');
-    const classSelector = `#${itemID} .updateable`;
+    const classSelector = `#${itemID} .updateable-fields`;
 
     console.log(classSelector);
 

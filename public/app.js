@@ -1,4 +1,3 @@
-//delete this?
 function loadHomePage() {
     $('main').html(`
         <h2>This is the home page.</h2>
@@ -22,22 +21,33 @@ function readyNavButtons() {
     });
 }
 
+function readyListButtons() {
+    $('.put').on('click', (event) => {
+        let thisItem = $(event.currentTarget).parent().parent();
+        loadUpdateForm(thisItem);
+    });
+}
+
 //activated after CREATE req
 function displayData(data) {
-    console.log(data);
     for (index in data.items) {
         let thisItem = data.items[index];
         $('main').append(
             `
             <div class="item" id=${thisItem.id}>
-                <h3>${thisItem.title}</h3>
-                <p>${thisItem.description}</p>
-                <button class="put">Update</button>
-                <button class="del">Remove from list</button>
+                <div class="static-fields"></div>
+                <div class="updateable-fields">
+                    <h3>${thisItem.title}</h3>
+                    <p>${thisItem.description}</p>
+                    <button class="put">Update</button>
+                    <button class="del">Remove from list</button>
+                </div>
             </div>
             `
         );
     }
+    console.log('data displayed');
+    readyListButtons();
 }
 
 $(readyNavButtons)
