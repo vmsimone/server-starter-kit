@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/vmsimone/server-starter-kit.git"
+    "url": "https://github.com/vmsimone/server-starter-kit.git"
   },
   "author": "vsimone",
   "license": "ISC",
@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/vmsimone/server-starter-kit#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongo": "^0.1.0",
+    "mongodb": "^3.3.3",
+    "mongoose": "^5.7.7"
   }
 }
