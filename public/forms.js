@@ -48,4 +48,6 @@ function getValById(target, idSelector) {
     return $(target).find(idSelector).val();
 }
 
-function buildPutObject(target, fieldsToUpdateArr)
+function buildPutObject(target, fieldsToUpdateArr) {
+    
+}
