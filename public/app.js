@@ -32,6 +32,13 @@ function readyListButtons() {
         let thisItem = $(event.currentTarget).parent().parent();
         loadUpdateForm(thisItem);
     });
+
+    $('.del').on('click', (event) => {
+        const thisItem = $(event.currentTarget).parent().parent();
+        const thisItemId = thisItem.attr('id');
+        
+        deleteItem(thisItemId);
+    });
 }
 
 function readyAddButton() {
@@ -52,7 +59,7 @@ function displayData(data) {
                     <h3>${thisItem.title}</h3>
                     <p>${thisItem.description}</p>
                     <button class="put">Update</button>
-                    <button class="del">Remove from list</button>
+                    <button class="del">Delete</button>
                 </div>
             </div>
             `

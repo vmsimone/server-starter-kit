@@ -5,7 +5,7 @@ function addItem(item) {
         method: 'post',
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(item),
-        success: function() {
+        success: () => {
             $('.add-section').html(`
                 <button class="add">Add</button>
             `);
@@ -16,7 +16,6 @@ function addItem(item) {
 
 //READ
 function getItems() {
-    console.log('GET request called');
     $.ajax({
         url: '/api/items',
         method: 'get',
@@ -31,6 +30,15 @@ function updateItem(item) {
         method: 'put',
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(item),
+        success: () => { loadListPage() }
+    });
+}
+
+//DELETE
+function deleteItem(itemId) {
+    $.ajax({
+        url: `/api/items/${itemId}`,
+        method: 'delete',
         success: () => { loadListPage() }
     });
 }
