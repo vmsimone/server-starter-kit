@@ -10,6 +10,12 @@ function loadListPage() {
         <h2>Below are all of the items in the "items" collection</h2>
     `);
     getItems();
+    $('main').append(`
+        <div class="add-section">
+            <button class="add">Add</button>
+        </div>
+    `);
+    readyAddButton();
 }
 
 function readyNavButtons() {
@@ -25,6 +31,12 @@ function readyListButtons() {
     $('.put').on('click', (event) => {
         let thisItem = $(event.currentTarget).parent().parent();
         loadUpdateForm(thisItem);
+    });
+}
+
+function readyAddButton() {
+    $('.add').on('click', () => {
+        loadAddForm();
     });
 }
 

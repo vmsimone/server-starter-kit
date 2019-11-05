@@ -9,7 +9,7 @@ function loadUpdateForm(selectedItem) {
         <form action="#" name="update-form" class="js-update">
             <fieldset>
                 <label for="item-title">New Title:</label>
-                <input type="text" id="item-title" value="${oldTitle}">
+                <input type="text" id="item-title" value="${oldTitle}" autoselect>
                 <br><br>
                 <label for="item-description">New Description:</label>
                 <input type="text" id="item-description" value="${oldDescription}">
@@ -23,8 +23,26 @@ function loadUpdateForm(selectedItem) {
     readyFormButtons(itemID);
 }
 
+function loadAddForm() {
+    $('.add-section').html(`
+        <form action="#" name="add-form" class="js-add">
+            <fieldset>
+                <label for="add-item-title">Title:</label>
+                <input type="text" id="add-item-title" placeholder="Sample Title" autoselect>
+                <br><br>
+                <label for="add-item-description">Description:</label>
+                <input type="text" id="add-item-description" placeholder="Sample description">
+                <br><br>
+                <button type="submit" class="save">Save</button>
+            </fieldset>
+        </form>
+        <br>
+        <button class="cancel">Cancel</button>
+    `);
+    readyAddFormButtons();
+}
+
 function readyFormButtons(itemID) {
-    console.log('form buttons listening');
     $('.js-update').submit(event => {
         //update the item on the database and reload page
         event.preventDefault();
@@ -34,13 +52,35 @@ function readyFormButtons(itemID) {
             "title": `${getValById(`#${itemID}`, '#item-title')}`,
             "description": `${getValById(event.currentTarget, '#item-description')}`
         };
-        console.log(putObject);
         updateItem(putObject);
     });
 
     $('.cancel').on('click', () => {
-      loadPage('list');
+        loadListPage();
     });
+}
+
+function readyAddFormButtons() {
+    $('.js-add').submit(event => {
+        event.preventDefault();
+        const title = $(event.currentTarget).find('#add-item-title').val();
+        const desc = $(event.currentTarget).find('#add-item-description').val();
+        console.log(title);
+        console.log(desc);
+
+        let addObject = {
+            "title": `${title}`,
+            "description": `${desc}`
+        };
+        addItem(addObject);
+    });
+
+    $('.cancel').on('click', () => {
+        $('.add-section').html(`
+            <button class="add">Add</button>
+        `);
+        readyAddButton();
+      });
 }
 
 function getValById(target, idSelector) {
