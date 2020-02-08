@@ -24,4 +24,4 @@ yourSchema.methods.serialize = function() {
 
 const Item = mongoose.model('Item', yourSchema); //collection name defaults to "items"
 
-module.exports = {Item};
+module.exports = { Item };

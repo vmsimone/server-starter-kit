@@ -1,9 +1,15 @@
 'use strict';
 
+// our two dependencies
 const express = require('express');
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
+
+// avoiding some deprecations
+mongoose.set('useNewUrlParser', true );
+mongoose.set('useUnifiedTopology', true );
+mongoose.set('useFindAndModify', false );
 
 const { PORT, DATABASE_URL } = require('./config');
 const { Item } = require('./models');
